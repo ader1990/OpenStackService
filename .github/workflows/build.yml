@@ -16,4 +16,4 @@ jobs:
       - uses: actions/upload-artifact@v1
         with:
           name: OpenStackService.exe
-          path: {{ matrix.platform }}/SDK10Release/OpenStackService.exe
+          path: "{{ matrix.platform }}/SDK10Release/OpenStackService.exe"
