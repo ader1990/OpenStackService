@@ -1,0 +1,19 @@
+name: Build OpenStack Service for Windows ARM64
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    strategy:
+      matrix:
+        platform: ['x64']
+
+    steps:
+      - name: Compile Python
+        shell: powershell
+        run: |
+          ./scripts/Build.ps1
+      - uses: actions/upload-artifact@v1
+        with:
+          name: OpenStackService.exe
+          path: {{ matrix.platform }}/SDK10Release/OpenStackService.exe
